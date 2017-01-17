@@ -1,4 +1,4 @@
-# backstracks
+ backstracks
 Continous Writer(CW) Web Application Development
 
 How people do research and write their text can eventually equal the content of a book but how the content is sorted to reproduce the text, book like or site, for any media environment, examples are found through Microsoft's Visual Code and even Github Web and desk method but I find myself in need of an application which achieves a similar application at text and site structure.
