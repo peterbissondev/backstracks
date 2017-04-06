@@ -1,12 +1,12 @@
-backstracks
-Continous Writer(CW) Web Application Development
+backstracks'
+cWriter (Continous Writer) "Single Page Application"
 
-How people do research and write their text can eventually equal the content of a book but how the content is sorted to reproduce the text, book like or site, for any media environment, examples are found through Microsoft's Visual Code and even Github Web and desk method but I find myself in need of an application which achieves a similar application at text and site structure.
+cWriter is quickly becoming a text interpretation application, meaning that every pointed word is the subject of interpretation but there are issues when pointing to text, in defining its containing box.
 
-With text, there are examples with phone applications, where texting provides quick referencing to next word options, an objective I am looking into but at the client or browser, through JavaScript and eventually with server-side support. jSon is the chosen transportable file format and structure where at the client I have tested in the past, text numeric referencing through JavaScript routine is fast enough for real time referencing and rewrties.
+Why the issues actually exist, could be resolved in part by defining specifically a box, width and height, and containing text, but the code over-head is considerable (if the intention, as is my intention in developing cWriter, a client-side application, automating writing a book and resulting site), since the application is being developed for every device.
 
-With text referencing, what I am also taking into account is the idea that the text can also be the content and index pages of the book or site structure and with a persistent jSon file format, numbers referencing words, at the server, regrouping, renumbering word referencing, meaning with jSon transformed and ready for the client book or site, at the server and client account it is one file reference, moving closer to machine level clusters, and how jSon words and numeric content are moved at high speed to the browser, yet with text and numeric references sorted with each rewrite, the original word collection and number reference is constantly updated, not the same, or changed.
+Speeding things up with "contenteditable" and saving text to "localStorage" with every keypress is good, as is text selection and target a specific word, anywhere on the Web page, (eliminating all textarea and input mark-up), a canvas will measure text, yet the canvas routine leaves a lot to be desired. 
 
-Tests conducted on what many file fragments and indexing cost at any computer, give reason to database files, or no database but continous versioning of a book or site structure in real time, thus continous writer.
+What developers, don't talk much about, any longer, when it comes to text, is proportional spacing. Back in the day, IBM called character width Picas. For example, a norrower character would be 2 picas, most were 3, and wider characters, such as an "m" or "w", depending on the font and proportional spacing, would be 5 picas.
 
-In the end, it appears as a simple editor except when doing research, how we fill in the gaps, betweem topics, also becomes a study.
+So, calculating a range of applied characters and their font width, so that selected range is defined as equal to a "pageX", tells us if the click is, althought within the binding box of the text, will not tell us if the click is outside of the range of the actual text.
