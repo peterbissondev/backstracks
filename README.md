@@ -19,6 +19,8 @@ With practice, what makes sense as in what is expected by the end user, in readi
 
 What the JavaScriptv1-0 Represents:
 
+At World level developing, it looks like over-simplified technology, such as with HTML, I figure, cut back to, what is text formatting only,(Images and video evolution, are clickable area maps, at up to sixty frames per second, but a topic for another day.). eliminating, all forms and direct links.
+
 
 
 
