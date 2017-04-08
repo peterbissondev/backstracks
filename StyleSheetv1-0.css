@@ -1,0 +1,52 @@
+* {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:#333;
+}
+
+.page {
+    max-width:840px;
+    margin:auto;
+}
+
+
+h1 {
+    font-weight: normal;
+    margin: 20px 5%;
+    
+}
+
+
+h2 {
+    font-weight: normal;
+    margin: 20px 5%;
+}
+
+h3 {
+    margin: 25px 5%;
+}
+
+h4 {
+    text-align:right;
+    margin: 30px 5% 0px 5%;
+}
+
+h5 {
+    font-weight: normal;
+    text-align:right;
+    margin: 0px 5% 30px 5%;
+}
+
+hr {
+    margin: 0px 5%;
+}
+
+p {
+    margin: 20px 5%;
+}
+
