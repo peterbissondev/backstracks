@@ -1,3 +1,4 @@
+
 Developing backstracks'
 cWriter (Continuous Writer) "Single Page Application"
 
@@ -21,7 +22,7 @@ What the JavaScriptv1-0 Represents:
 
 At World level developing, it looks like over-simplified technology, such as with HTML, I figure, cut back to, what is text formatting only,(Images and video evolution, are clickable area maps, at up to sixty frames per second, but a topic for another day.). eliminating, all forms and direct links.
 
-
+Looking at JavaScript select options...to be updated.
 
 
 
