@@ -155,7 +155,7 @@
         if (typeof b !== "object")
             b = JSON.parse(b);
 
-        if (a === "Chapter25/pageA625") {
+        if (a === "templates") {
 
             templates = b;
 
@@ -189,7 +189,7 @@
                             sessionStorage.setItem(a, JSON.stringify(client.responseText));
                     }
                 };
-                client.open("GET", "Book/" + a + ".json", false);
+                client.open("GET", "" + a + ".json", false);
                 client.send(null);
             }
         }
@@ -201,7 +201,7 @@
 //        var c = document.getElementsByTagName("D6")[0];
 //        M["D6"](c);
 
-        Page.push("Chapter25/pageA625");
+        Page.push("templates");
         getPage();
 
     };
