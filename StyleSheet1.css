@@ -1,0 +1,169 @@
+
+
+A1 {
+    display: block;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 0px;
+    height: 0px;
+    overflow: visible;
+    z-index: 999;
+}
+
+B1 {
+    display: block;
+    position: fixed;
+    left: 10px;
+    top: 50%;
+    width: 20px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #424242;
+    cursor: pointer;
+}
+
+B2 {
+    display: block;
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    width: 20px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #424242;
+    cursor: pointer;
+}
+
+
+B3 {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #CCC;
+    background-color: #fff;
+}
+
+C1 {
+    display: block;
+    position: relative;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 2% 5% 1.5%;
+}
+
+C2 {
+    display: block;
+    position: relative;
+    max-width: 955px;
+    margin: 0px auto 10px;
+    cursor: pointer;
+}
+
+D1, D2, D3, D4, D5, D8 {
+    font-family: 'Open Sans', sans-serif;
+    width: 100px;
+    font-size: 13px;
+    line-height: 20px;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+
+
+D6 {
+    font-family: 'Open Sans', sans-serif;
+    word-spacing: 5px;
+    width: 100px;
+    font-size: 13px;
+    line-height: 20px;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+D7 {
+    font-family: 'Open Sans', sans-serif;
+    word-spacing: 5px;
+    width: 100px;
+    font-size: 13px;
+    line-height: 20px;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+
+A2 {
+    display: block;
+    position: relative;
+    top: 80px;
+    max-width: 955px;
+    min-height: 1400px;
+    border: 1px solid #fff;
+    margin: 3% auto 20px;
+    color: #424242;
+}
+
+
+C3 {
+    display: block;
+    font-family: 'Poiret One','Open Sans', sans-serif;
+    font-size: 40px;
+    font-weight: normal;
+    margin: 4% 5% 0px;
+}
+
+C4 {
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    margin: 0px 5% 35px;
+}
+
+C5 {
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px 5%;
+}
+
+C6 {
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.5px;
+    line-height: 20px;
+    margin-bottom: 1.3em;
+    margin: 20px 5%;
+}
+
+C7 {
+    display: block;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 49%;
+    height: 800px;
+    border: 1px solid #fff;
+    float: left;
+}
+
+
+D9 {
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.5px;
+    line-height: 20px;
+    margin: 15px 10%;
+}
+
+D10 {
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.5px;
+    line-height: 20px;
+    margin: 15px 20%;
+}
