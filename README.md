@@ -1,8 +1,7 @@
 
-With the idea of automating writing a book, I'm without a doubt, nowhere close to my complete objective, because I am also caught up in evaluating more technology methods than I have ever evaluated in the past.
+Prodcuing a client-side application which provides for one click web search (Bing only for now.) of the text, features three modes, including "Site Mode", "Edit Mode", and "Code Mode", and provides access to an editable 1000 pages, enough to produce either a fairly large site or write a book, that is what my hobby and work is about.
 
-So far, leading the pack, as far a methods are concerned, are line interpretation technologies and technologies which rely on arrays rather than memory pointers. (Line interpretation is fast and arrays reserve space and can be extemely fast.)
+Installing the application, as anyone might through localhost or Web server services, is pretty well straight up html, css, and javascript, check folders, as files have been uploaded without folders, but it is the practice with the application, that continues to change my perception of what is achievable through a technology, no matter the client-side interest, which is very preicise.
 
-More on that as I move forward. Check the code and wiki.
-
+More notes to come.
 
