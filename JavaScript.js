@@ -1,210 +1,230 @@
-(function () {
-    
-    var Page = new Array();
-    var templates = "";
-    var readpage = "";
-    var editpage = "";
+﻿(function () {
 
-    var M = {
+    var lpage = "A001";
+    var serverlock = 0;
+    var nextprev = 1;
 
-        Home: function (a) {
+    document.oncontextmenu = function (event) {
+        var a = event.target;
+        var b = window.getComputedStyle(a).cursor;
 
-        },
+        if (b === "text") {
+///            alert(event.target.textContent);  Could find text range concern.
+            b = window.getSelection().anchorOffset;
+            b = a.textContent.substring(0, b).split(" ").length - 1;
+            a = a.textContent.split(" ");
+ //           alert(a[b]);
+            window.open("https://www.bing.com/search?q=" + a[b], "new");
 
-        SiteMode: function (a) {
-            a.textContent = "EditMode";
-            document.getElementsByTagName("A2")[0].setAttribute("contentEditable", "true");
-        },
+        }
+        return false;
+    }
 
-        EditMode: function (a) {
-            a.textContent = "SiteMode";
-            document.getElementsByTagName("A2")[0].setAttribute("contentEditable", "false");
-        },
 
-        D6: function (a) {
-            a = parseInt(a.textContent.match(/\d+/));
-            var b = Math.round(a / 25) + 1; 
-            if (a < 10) a = "00" + a;
-            if (a > 9 && a < 100) a = "0" + a;
-            var c = document.getElementsByTagName("D5")[0].textContent;
-            if (c === "SiteMode")
-                a = "Chapter" + b + "/pageA" + a;
+    document.onclick = function (event) {
+
+         var a = event.target;
+        var b = window.getComputedStyle(a).cursor;
+        var c = document.getElementById("ipage");
+
+        if (lpage.match(/B/))
+            localStorage.setItem(lpage, c.innerHTML);
+
+
+        if (b === "pointer") {
+
+            switch (a.textContent) {
+
+                case "Home":
+
+                    var d = document.getElementById("mode").textContent;
+
+                    if (d === "Site Mode") {
+                        setPageNum(1, 0);
+                    }
+
+                    break;
+
+                case "Site Mode": a.textContent = "Edit Mode";
+                    setAttrs("contenteditable", "true");
+                    setAttrs("style", "cursor:text");
+                    lpage = lpage.replace("A", "B");
+                    getpage();
+                    break;
+
+                case "Edit Mode": a.textContent = "Code Mode";
+                    b = c.innerHTML;
+                    a = b.match(/\<\/\w+\>/g);
+                    b = b.split(/\<\/\w+\>/g);
+                    var d = "";
+                    for (var i = 0; i < b.length - 1; i++) {
+                        d = d + b[i] + a[i] + "\r\n\n";
+                    }
+                    c.innerText = d;
+
+                    break;
+
+                case "Code Mode": a.textContent = "Site Mode";
+                    localStorage.setItem(lpage, c.innerText.replace(/[\r\n]/g, ""));
+                    setAttrs("contenteditable", "false");
+                    setAttrs("style", "cursor:alias");
+                    c.innerHTML = c.textContent.replace(/[\r\n]/g,"");
+                    lpage = lpage.replace("B", "A");
+                    getpage();
+                    break;
+
+                case " > ":
+                    document.getElementById("nextprev").textContent = "Next";
+                    nextprev = 1;
+                    setPageNum(parseInt(lpage.match(/\d+/)), 1);
+                    break;
+
+                case " < ":
+                    document.getElementById("nextprev").textContent = "Prev";
+                    nextprev = 0;
+                    setPageNum(parseInt(lpage.match(/\d+/)), 1);
+                    break;
+
+                case "Next": a.textContent = "Prev"; nextprev = 0; break;
+
+                case "Prev": a.textContent = "Next"; nextprev = 1; break;
+
+                case "1": setPageNum(parseInt(lpage.match(/\d+/)), 1); break;
+
+                case "10": setPageNum(parseInt(lpage.match(/\d+/)), 10); break;
+
+                case "100": setPageNum(parseInt(lpage.match(/\d+/)), 100); break;
+
+                case "Copy": localStorage.setItem("copy", c.innerHTML); break;
+
+                case "Paste":
+                    if (!localStorage.getItem("copy")) {
+                        c.innerHTML = "<p>Use copy followed by paste to create a page template.</p>"
+                    }
+                    else
+                        c.innerHTML = localStorage.getItem("copy");
+                    break;
+
+                case "Clear":
+                    localStorage.removeItem(lpage);
+                    c.innerHTML = "<p>Use copy followed by paste to create a page template. Hint: Copy a Site Mode page to an Edit Mode page.</p>"
+                    break;
+
+                case "Clear All": /* Removes all local storage */
+                    localStorage.clear();
+                    break;
+
+                case "Server Off": serverlock = 1; a.textContent = "Server On"; break;
+
+                case "Server On": serverlock = 0; a.textContent = "Server Off"; break;
+                
+                default: break;
+            }
+
+        }
+        else if (b === "alias") {
+
+            b = window.getSelection().anchorOffset;
+            b = a.textContent.substring(0, b).split(" ").length - 1;
+            a = a.textContent.split(" ");
+            window.open("https://www.bing.com/search?q=" + a[b], "new");
+
+        }
+
+    }
+
+
+    function setAttrs(g, h) {
+        document.getElementById("ipage").setAttribute(g, h);
+    }
+
+
+    function setPageNum(a, b) {
+
+        if (nextprev) {
+            a = a + b;
+            if (a > 998) {
+                a = 999;
+                document.getElementById("nextprev").textContent = "Prev";
+                nextprev = 0;
+            }
+        }
+        else
+            if (!nextprev) {
+                a = a - b;
+                if (a < 2) {
+                    a = 1;
+                    document.getElementById("nextprev").textContent = "Next";
+                    nextprev = 1;
+                }
+            }
+
+
+        document.getElementById("pageNum").textContent = " Page " + a + ".";
+
+        if (a < 10)
+            a = "00" + a;
+        if (a >= 10 && a <= 99)
+            a = "0" + a;
+
+        lpage = lpage.match(/[AB]/) + a;
+
+        getpage();
+
+    }
+
+
+
+
+
+
+
+    function getpage() {
+
+        var c = document.getElementById("ipage");
+
+        if (lpage.match(/B\d{3}/)) {
+
+            if (!localStorage.getItem(lpage)) {
+                c.innerHTML = "<p>Use copy followed by paste to create a page template. Hint: Copy a Site Mode page to an Edit Mode page.</p>"
+
+            }
             else
-                if (c === "EditMode") {
-                    a = "epageA" + a;
-                    
-                }
-
-            Page.push(a);
-            getPage();
-        },
-
-        D7: function (a) {
-            var c = document.getElementsByTagName("D6")[0];
-            a = parseInt(c.textContent.match(/\d+/)) + parseInt(a);
-            if (a < 1) a = 1;
-            if (a > 1000) a = 1000;
-            c.textContent = "Page " + a + ".";
-            M["D6"](c);
+                c.innerHTML = localStorage.getItem(lpage);
         }
 
-    };
 
-    document.onkeyup = document.onclick = function (event) {
+        if (lpage.match(/A\d{3}/)) {
 
-        var a = window.getSelection();
-        var b = a.anchorNode;
-        var c = a.anchorOffset;
-        var d = b.textContent.substring(0, c).split(" ").length - 1;
-        var e = b.textContent.split(" ");
-        var f = b.parentNode.getBoundingClientRect();
-        var g = event.pageX - (f.left + window.pageXOffset);
-        var h = event.pageY - (f.top + window.pageYOffset);
+            if (!localStorage.getItem(lpage) || serverlock) {
 
-        if (c > 0 && c < b.textContent.length || c === 0 && b.textContent.length === 1) {
-
-            if (g > 0 && g < f.width && h > 0 && h < f.height) {
-
-                if (b.parentNode.nodeName === "D5") {
-                    M[e[d]](b);
-                }
-                else
-                    if (b.parentNode.nodeName === "D6") {
-                        M["D6"](b);
-                        
-                    }
-                    else if (b.parentNode.nodeName === "D7") {
-                        M["D7"](e[d]);
-
-                    }
-
-
-            }
-        }
-    };
-
-    function makePage(z) {
-
-        var a = Object.keys(templates);
-        var b = templates[z].target;
-        var c = templates[z].nodes;
-        var d = templates[z].name;
-        var e = templates[z].class;
-        var f = templates[z].text;
-        //    var d = b.charCodeAt(1) - 1;
-
-        var g, h, j;
-
-        for (var i = 0; i < c.length; i++) {
-
-            if (i === 0) {
-                g = b;
-            }
-            else {
-
-                if (c[i] > c[i - 1]) {
-                    g = c[i - 1] + d[i - 1];
-                }
-
-                if (c[i] < c[i - 1]) {
-
-                    a = c.charCodeAt(i) - 1;
-
-                    if (a === 64) {
-                //        alert(a + "   " + c);
-                        g = b;
-                    }
-                    else {
-
-                        g = String.fromCharCode(a);
-
-                //        alert(g + "   " + c);
-
-                        //    h = c.subString(0, i+1);
-
-                        //    alert(h);
-                        h = c.lastIndexOf(g);
-
-                        if (h < 0)
-                            g = b;
-                        else {
-                            g = c[h] + d[h];
-                        }
-                    }
-                }
-
-            }
-            a = document.getElementsByTagName(g).length - 1;
-            a = document.getElementsByTagName(g)[a];
-
-            if (i === 0)
-                a.innerHTML = "";
-            j = document.createElement(c[i] + d[i]);
-            j.textContent = f[i];
-            a.appendChild(j);
-
-        }
-    }
-
-    function setPage() {
-
-        var a = Page.shift();
-        var b = sessionStorage.getItem(a);
-
-        b = JSON.parse(b);
-        if (typeof b !== "object")
-            b = JSON.parse(b);
-
-        if (a === "templates") {
-
-            templates = b;
-
-            makePage("main");
-            makePage("default");
-        }
-
-    }
-
-    function getPage() {
-
-        var a = Page[0];
-
-        if (!sessionStorage.getItem(a)) {
-
-// Must find a way to set page type. Could have to do with page number range at contents except ?
-// May have to rethink using the templates and/or page type system.
-
-            if (a.match(/(epageA\d+)/)) {
-                sessionStorage.setItem(a, JSON.stringify(templates["default"]));
-
-            }
-
-            else {
- 
                 var client = new XMLHttpRequest();
                 client.onreadystatechange = function () {
                     if (client.status === 200 && client.readyState === 4) {
-
-                        if (JSON.stringify(client.responseText))
-                            sessionStorage.setItem(a, JSON.stringify(client.responseText));
+                        localStorage.setItem(lpage, client.responseText);
+                        c.innerHTML = localStorage.getItem(lpage);
                     }
-                };
-                client.open("GET", "" + a + ".json", false);
+                    else
+                        c.innerHTML = "<p class=\"topic\">This page has yet to be published at the server.<p>";
+                    //    alert("server");
+                }
+                client.open("GET", "Contents/" + lpage + ".html", false);
                 client.send(null);
             }
+            else
+                c.innerHTML = localStorage.getItem(lpage);
         }
-        setPage();
+
+
+
 
     }
 
+
     window.onload = function () {
-//        var c = document.getElementsByTagName("D6")[0];
-//        M["D6"](c);
 
-        Page.push("templates");
-        getPage();
+        getpage();
 
-    };
-
+    }
 
 })();
