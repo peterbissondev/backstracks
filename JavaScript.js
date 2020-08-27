@@ -208,7 +208,7 @@
                         c.innerHTML = "<p class=\"topic\">This page has yet to be published at the server.<p>";
                     //    alert("server");
                 }
-                client.open("GET", "Contents/" + lpage + ".html", false);
+                client.open("GET", "" + lpage + ".html", false);
                 client.send(null);
             }
             else
